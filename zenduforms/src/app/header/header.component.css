@@ -1,0 +1,45 @@
+.header {
+    background-color: #2188D9;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+    height: 64px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.header-links {
+    display: flex;
+    /* background-color: antiquewhite; */
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.link {
+    display: flex;
+    height: 100%;
+    padding-inline: 16px;
+}
+
+.link:hover, .active-link {
+    background-color: rgb(23,116,187);
+}
+
+.link a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.config {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

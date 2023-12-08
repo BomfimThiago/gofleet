@@ -25,6 +25,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	font-family: 'Roboto', 'sans-serif';
 }
 ol, ul {
 	list-style: none;
@@ -41,3 +42,13 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+a, li {
+	cursor: pointer;
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover, li:hover {
+	color: inherit; /* ou defina a cor desejada */
+	text-decoration: none; /* ou underline, dependendo da preferência */
+  }

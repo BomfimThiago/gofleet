@@ -7,6 +7,7 @@ import { ReportComponent } from './report/report.component';
 import { WorkflowComponent } from './workflow/workflow.component';
 
 export const routes: Routes = [
+    { path: '', redirectTo: '/submissions', pathMatch: 'full' },
     { path: 'forms', component: FormComponent },
     { path: 'customers', component: CustomerComponent },
     { path: 'submissions', component: SubmissionComponent },
