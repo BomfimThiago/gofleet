@@ -1,0 +1,5 @@
+.inner-container {
+    height: calc(100vh - 64px);
+    padding-inline: 40px;
+    padding-block: 40px;
+}

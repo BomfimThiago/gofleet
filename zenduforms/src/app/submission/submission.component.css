@@ -1,0 +1,11 @@
+.title {
+    font-size: 32px;
+    font-weight: 700;
+    font-weight: 700;
+    line-height: 140%;
+}
+
+.search-icon {
+    background: white !important;
+    border-right: none !important;
+}
