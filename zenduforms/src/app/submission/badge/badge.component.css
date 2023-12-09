@@ -1,0 +1,28 @@
+.status-container {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 16px;
+    border: 1px solid;
+    border-radius: 4px;
+    width: 128px;
+  }
+  
+  .status-success {
+    border-color: green;
+  }
+  
+  .status-warning {
+    border-color: orange;
+  }
+  
+  .status-error {
+    border-color: red;
+  }
+  
+  .ball {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: red;
+  }

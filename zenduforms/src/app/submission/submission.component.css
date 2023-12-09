@@ -9,3 +9,20 @@
     background: white !important;
     border-right: none !important;
 }
+
+.card-map-container {
+    display: flex;
+    gap: 40px;
+    margin-top: 36px;
+    height: 87%;
+}
+
+.card-container {
+    flex:1;
+    max-width: 459px;
+    overflow-y: scroll;
+}
+
+.map-container {
+    flex: 1;
+}
