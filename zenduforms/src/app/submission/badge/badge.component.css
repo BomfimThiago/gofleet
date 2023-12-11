@@ -1,28 +1,45 @@
 .status-container {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 8px;
     padding: 4px 16px;
     border: 1px solid;
     border-radius: 4px;
-    width: 128px;
+    min-width: 128px;
   }
   
-  .status-success {
-    border-color: green;
-  }
-  
-  .status-warning {
-    border-color: orange;
-  }
-  
-  .status-error {
-    border-color: red;
-  }
-  
-  .ball {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: red;
-  }
+.status-container.uncomplete {
+  border-color: #FF3D00;
+  color: #FF3D00;
+  background-color: rgba(255, 61, 0, 0.10);
+}
+
+.status-container.low_risk {
+  border-color: #53D86A;
+  color: #53D86A;
+  background-color: #D7E5DA;
+}
+
+.status-container.needs_review, .status-container.unassigned {
+  border-color: #B8B9BC;
+  color: #B8B9BC;
+  background-color: #ECECED;
+}
+
+.ball {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.ball.uncomplete {
+  background-color: #FF3D00;
+}
+
+.ball.low_risk {
+  background-color: #53D86A;
+}
+
+.ball.needs_review, .ball.unassigned {
+  background-color: #B8B9BC;
+}

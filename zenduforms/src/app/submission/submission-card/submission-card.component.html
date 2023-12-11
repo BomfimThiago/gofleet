@@ -1,92 +1,19 @@
-<div>
-    <div class="submission-card mt-2">
-        <div class="card-title-container">
-            <h1 class="submission-card-title">Work Flow: Requires Location</h1>
-            <app-badge [status]="'success'"></app-badge>
-        </div>
-        <div class="mt-3">
-            <span class="card-from mr-1">From: </span>
-            <span class="">bomfimsdasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1"> To: </span>
-            <span>bsadasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1">Due Date: </span>
-            <span class="card-date">06 december</span>
-        </div>
+
+<div class="submission-card mt-2">
+    <div class="card-title-container">
+        <h1 class="submission-card-title">{{ submission.title }}</h1>
+        <app-badge [status]="submission.status"></app-badge>
     </div>
-    <div class="submission-card mt-2">
-        <div class="card-title-container">
-            <h1 class="submission-card-title">Work Flow: Requires Location</h1>
-            <app-badge [status]="'success'"></app-badge>
-        </div>
-        <div class="mt-3">
-            <span class="card-from mr-1">From: </span>
-            <span class="">bomfimsdasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1"> To: </span>
-            <span>bsadasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1">Due Date: </span>
-            <span class="card-date">06 december</span>
-        </div>
+    <div class="mt-3">
+        <span class="card-from mr-1">From: </span>
+        <span class="">{{ submission.from }}</span>
     </div>
-    <div class="submission-card mt-2">
-        <div class="card-title-container">
-            <h1 class="submission-card-title">Work Flow: Requires Location</h1>
-            <app-badge [status]="'success'"></app-badge>
-        </div>
-        <div class="mt-3">
-            <span class="card-from mr-1">From: </span>
-            <span class="">bomfimsdasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1"> To: </span>
-            <span>bsadasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1">Due Date: </span>
-            <span class="card-date">06 december</span>
-        </div>
+    <div class="mt-2">
+        <span class="card-from mr-1"> To: </span>
+        <span>{{ submission.to }}</span>
     </div>
-    <div class="submission-card mt-2">
-        <div class="card-title-container">
-            <h1 class="submission-card-title">Work Flow: Requires Location</h1>
-            <app-badge [status]="'success'"></app-badge>
-        </div>
-        <div class="mt-3">
-            <span class="card-from mr-1">From: </span>
-            <span class="">bomfimsdasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1"> To: </span>
-            <span>bsadasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1">Due Date: </span>
-            <span class="card-date">06 december</span>
-        </div>
-    </div>
-    <div class="submission-card mt-2">
-        <div class="card-title-container">
-            <h1 class="submission-card-title">Work Flow: Requires Location</h1>
-            <app-badge [status]="'success'"></app-badge>
-        </div>
-        <div class="mt-3">
-            <span class="card-from mr-1">From: </span>
-            <span class="">bomfimsdasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1"> To: </span>
-            <span>bsadasdasd</span>
-        </div>
-        <div class="mt-2">
-            <span class="card-from mr-1">Due Date: </span>
-            <span class="card-date">06 december</span>
-        </div>
+    <div class="mt-2">
+        <span class="card-from mr-1">Due Date: </span>
+        <span class="card-date">{{ submission.dueDate }}</span>
     </div>
 </div>

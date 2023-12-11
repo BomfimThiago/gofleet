@@ -59,7 +59,9 @@
     </form>
     <div class="card-map-container">
         <div class="card-container">
-            <app-submission-card></app-submission-card>
+            @for(submission of submissions; track submission.id) {
+                <app-submission-card [submission]=submission></app-submission-card>
+            }
         </div>
         <div class="map-container bg-light">
             <app-submission-map></app-submission-map>
