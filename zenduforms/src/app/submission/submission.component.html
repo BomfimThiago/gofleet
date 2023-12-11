@@ -33,7 +33,7 @@
                         (change)="onFormChange()">
                         <option value=0>Select Form</option>
                         @for(submission of submissions; track submission.id) {
-                            <option [ngValue]="submission.id">{{ submission.title }}</option>
+                            <option [ngValue]="submission.id">{{ submission.task }}</option>
                         }
                     </select>
                 </div>
@@ -67,38 +67,45 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3 row d-flex justify-content-end align-items-center">
+            <div class="col-3 row d-flex justify-content-end align-items-center ml-2">
                 <div class="col-4 btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-primary btn-toogle active">
+                    <label class="btn btn-outline-primary btn-toggle" [class.active]="view === 'card-map'" (click)="updateView('card-map')">
                         <input type="radio" name="options" checked> Map
                     </label>
-                    <label class="btn btn-outline-secondary btn-toogle">
-                        <input type="radio" name="options" > List
+                    <label class="btn btn-outline-secondary btn-toggle" [class.active]="view === 'list'" (click)="updateView('list')">
+                        <input type="radio" name="options"> List
                     </label>
                 </div>
                 <div class="ml-4 col-4">
-                    <a class="d-flex gap-3 align-items-center" routerLink="/">
+                    <a class="d-flex gap-3 align-items-center" (click)="exportFilteredSubmissions()">
                         <img src="assets/icons/Paper Download.svg" alt="export icon" />
-                        <span class="text-primary ml-1">Export</span>
+                        <span class="text-primary ml-2">Export</span>
                     </a>
                 </div>
             </div>
         </div>
     </form>
-    <div class="card-map-container">
-        <div class="card-container">
-            @for(submission of filteredSubmissions; track submission.id) {
-                <app-submission-card [submission]=submission></app-submission-card>
-            } @empty {
-                @if(searchField || status || selectedSubmissionId) {
-                    <span>No matching submission for the selected filters</span>
-                } @else {
-                    <span>No submissions</span>
+    @if(view == 'card-map') {
+        <div class="card-map-container">
+            <div class="card-container">
+                @for(submission of filteredSubmissions; track submission.id) {
+                    <app-submission-card [submission]=submission></app-submission-card>
+                } @empty {
+                    @if(searchField || status || selectedSubmissionId) {
+                        <span>No matching submission for the selected filters</span>
+                    } @else {
+                        <span>No submissions</span>
+                    }
                 }
-            }
+            </div>
+            <div class="map-container bg-light">
+                <app-submission-map></app-submission-map>
+            </div>
         </div>
-        <div class="map-container bg-light">
-            <app-submission-map></app-submission-map>
+    } @else {
+        <div class="mt-5">
+            <span>List view component would be here</span>
         </div>
-    </div>
+    }
+    
 </main>

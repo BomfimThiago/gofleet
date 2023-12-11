@@ -13,7 +13,7 @@ import { Submission, SubmissionStatus } from '../submission';
 export class SubmissionCardComponent {
   @Input() submission: Submission = { 
     id: 0, 
-    title: '', 
+    task: '', 
     status: SubmissionStatus.Unassigned, 
     from: '', 
     to: '', 

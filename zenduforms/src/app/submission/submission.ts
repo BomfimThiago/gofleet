@@ -8,7 +8,7 @@ export enum SubmissionStatus {
 
 export interface Submission {
     id: number, 
-    title: string, 
+    task: string, 
     status: string, 
     from: string, 
     to: string, 
