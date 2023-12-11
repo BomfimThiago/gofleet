@@ -6,22 +6,50 @@
         <div class="row">
             <div class="col-9 row">
                 <div class="col-3">
-                    <input type="text" class="form-control" id="inputField" placeholder="Search...">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend" >
+                            <div class="input-group-text search-icon">
+                                <img src="assets/icons/Search.svg" alt="form" />
+                            </div>
+                        </div>
+                        <input 
+                            name="search"
+                            style="border-left: none;" 
+                            type="text" 
+                            class="form-control" 
+                            id="inlineFormInputGroup" 
+                            placeholder="Search..."
+                            [(ngModel)]="searchField" 
+                            (input)="onFormChange()"
+                        >
+                    </div>
                 </div>
                 <div class="col-3">
-                    <select class="form-control" id="select1">
-                    <option>Select Form</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
-                    <option>Option 3</option>
+                    <select 
+                        name="select-form" 
+                        class="form-control" 
+                        id="select-form" 
+                        [(ngModel)]="selectedSubmissionId" 
+                        (change)="onFormChange()">
+                        <option value=0>Select Form</option>
+                        @for(submission of submissions; track submission.id) {
+                            <option [ngValue]="submission.id">{{ submission.title }}</option>
+                        }
                     </select>
                 </div>
                 <div class="col-3">
-                    <select class="form-control" id="select2">
-                    <option>Select Status</option>
-                    <option>Option A</option>
-                    <option>Option B</option>
-                    <option>Option C</option>
+                    <select
+                        name="select-status"
+                        class="form-control" 
+                        id="select-status"
+                        [(ngModel)]="status" 
+                        (change)="onFormChange()"
+                    >
+                    <option value="">Select Status</option>
+                    <option value="Uncomplete">Uncomplete</option>
+                    <option value="Low Risk">Low Risk</option>
+                    <option value="Needs Review">Needs Review</option>
+                    <option value="Unassigned">Unassigned</option>
                     </select>
                 </div>
                 <div class="col-3">
@@ -59,8 +87,14 @@
     </form>
     <div class="card-map-container">
         <div class="card-container">
-            @for(submission of submissions; track submission.id) {
+            @for(submission of filteredSubmissions; track submission.id) {
                 <app-submission-card [submission]=submission></app-submission-card>
+            } @empty {
+                @if(searchField || status || selectedSubmissionId) {
+                    <span>No matching submission for the selected filters</span>
+                } @else {
+                    <span>No submissions</span>
+                }
             }
         </div>
         <div class="map-container bg-light">

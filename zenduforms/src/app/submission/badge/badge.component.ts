@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SubmissionStatus } from '../submission';
 
 @Component({
   selector: 'app-badge',
@@ -13,10 +14,10 @@ export class BadgeComponent {
   mappedStatus: string = '';
 
   mapStatus: { [key: string]: string } = {
-    "uncomplete": "Uncomplete",
-    "low_risk": "Low Risk",
-    "needs_review": "Needs Review",
-    "unassigned": "Unassigned",
+    "Uncomplete" : "uncomplete",
+    "Low Risk" : "low_risk",
+    "Needs Review" : "needs_review",
+    "Unassigned": "unassigned"
   }
 
   ngOnInit() {

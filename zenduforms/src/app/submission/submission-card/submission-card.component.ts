@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '../badge/badge.component';
-import { Submission } from '../submission';
+import { Submission, SubmissionStatus } from '../submission';
 
 @Component({
   selector: 'app-submission-card',
@@ -14,7 +14,7 @@ export class SubmissionCardComponent {
   @Input() submission: Submission = { 
     id: 0, 
     title: '', 
-    status: '', 
+    status: SubmissionStatus.Unassigned, 
     from: '', 
     to: '', 
     dueDate: '' 
