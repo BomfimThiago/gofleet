@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { BadgeComponent } from '../badge/badge.component';
 import { Submission, SubmissionStatus } from '../submission';
+import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-submission-card',
@@ -19,4 +20,16 @@ export class SubmissionCardComponent {
     to: '', 
     dueDate: '' 
   }
+
+  formatDate(date: NgbDate): string {
+    const monthNames = [
+      'january', 'february', 'march', 'april', 'may', 'june',
+      'july', 'august', 'september', 'october', 'november', 'december'
+    ];
+  
+    const day = date.day.toString().padStart(2, '0');
+    const month = monthNames[date.month - 1];
+    return `${day} ${month}`;
+  }
+
 }

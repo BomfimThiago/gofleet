@@ -12,5 +12,5 @@ export interface Submission {
     status: string, 
     from: string, 
     to: string, 
-    dueDate: string, 
+    dueDate: any, 
 }

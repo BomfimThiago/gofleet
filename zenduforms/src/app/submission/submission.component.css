@@ -26,3 +26,19 @@
 .map-container {
     flex: 1;
 }
+
+#calendar-button {
+    background-color: white; 
+    border-radius: 5px; 
+    border: 1px solid #ced4d9; 
+    padding: 0;
+    height: calc(2.25rem + 2px);
+    display: flex;
+    align-items: center;
+    outline: none;
+}
+
+#calendar-input:focus {
+    border-color: #ced4d9;
+    box-shadow: none;
+}

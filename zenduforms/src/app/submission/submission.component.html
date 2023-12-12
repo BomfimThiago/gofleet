@@ -9,7 +9,7 @@
                     <div class="input-group mb-2">
                         <div class="input-group-prepend" >
                             <div class="input-group-text search-icon">
-                                <img src="assets/icons/Search.svg" alt="form" />
+                                <img src="assets/icons/Search.svg" alt="search-icon" />
                             </div>
                         </div>
                         <input 
@@ -53,18 +53,25 @@
                     </select>
                 </div>
                 <div class="col-3">
-                    <!-- <input type="text" class="form-control" id="datepicker" placeholder="Select Date"> -->
-                    <div class="input-group">
-                        <input
+                    <button 
+                        id="calendar-button"
+                            (click)="d.toggle()"  
+                            type="button" 
+                        >
+                            <img class="ml-3" src="assets/icons/Calendar.svg" alt="calendar-icon" />
+                            <input
+                            id="calendar-input"
                             class="form-control"
                             placeholder="yyyy-mm-dd"
                             name="dp"
-                            [(ngModel)]="model"
+                            (ngModelChange)="onDateChange($event)"
+                            [(ngModel)]="selectedDate"
                             ngbDatepicker
                             #d="ngbDatepicker"
+                            style="border: none; height: calc(2rem + 2px);outline: none;" 
                         />
-                        <button class="btn btn-outline-secondary bi bi-calendar3" (click)="d.toggle()" type="button"></button>
-                    </div>
+                            
+                    </button>
                 </div>
             </div>
             <div class="col-3 row d-flex justify-content-end align-items-center ml-2">
