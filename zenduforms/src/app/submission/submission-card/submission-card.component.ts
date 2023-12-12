@@ -18,7 +18,9 @@ export class SubmissionCardComponent {
     status: SubmissionStatus.Unassigned, 
     from: '', 
     to: '', 
-    dueDate: '' 
+    dueDate: '',
+    latitude: 0,
+    longitude: 0
   }
 
   formatDate(date: NgbDate): string {

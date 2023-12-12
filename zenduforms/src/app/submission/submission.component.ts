@@ -23,13 +23,13 @@ export class SubmissionComponent {
   today = inject(NgbCalendar).getToday();
 
   submissions: Submission[] = [
-    { id:1, task: 'Work Flow1: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.today},
-    { id: 2, task: 'Work Flow2: Requires Location', status: SubmissionStatus.LowRisk, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 1) },
-    { id: 3, task: 'Work Flow3: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 2) },
-    { id: 4, task: 'Work Flow4: Requires Location', status: SubmissionStatus.NeedsReview, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 3) },
-    { id: 5, task: 'Work Flow5: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 4) },
-    { id: 6, task: 'Work Flow6: Requires Location', status: SubmissionStatus.LowRisk, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 5) },
-    { id: 7, task: 'Work Flow7: Requires Location', status: SubmissionStatus.Unassigned, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 6) },
+    { id: 1, task: 'Work Flow1: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.today, latitude: 43.6332, longitude: -79.2670 },
+    { id: 2, task: 'Work Flow2: Requires Location', status: SubmissionStatus.LowRisk, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 1), latitude: 43.6532, longitude: -79.3832 },
+    { id: 3, task: 'Work Flow3: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 2), latitude: 43.651070, longitude: -79.347015 }, // Exemplo de uma localização diferente em Toronto
+    { id: 4, task: 'Work Flow4: Requires Location', status: SubmissionStatus.NeedsReview, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 3), latitude: 43.6561, longitude: -79.3930 }, // Outra localização diferente
+    { id: 5, task: 'Work Flow5: Requires Location', status: SubmissionStatus.Uncomplete, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 4), latitude: 43.6426, longitude: -79.3871 },
+    { id: 6, task: 'Work Flow6: Requires Location', status: SubmissionStatus.LowRisk, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 5), latitude: 43.7182, longitude: -79.5182 },
+    { id: 7, task: 'Work Flow7: Requires Location', status: SubmissionStatus.Unassigned, from: 'denisgordiyenya@gmail.com', to: 'denisgordiyenya@gmail.com', dueDate: this.calendar.getNext(this.today, 'm', 6), latitude: 43.7731, longitude: -79.2575 },
   ];
 
   filteredSubmissions: Submission[];

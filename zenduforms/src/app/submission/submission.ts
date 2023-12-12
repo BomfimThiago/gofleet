@@ -12,5 +12,7 @@ export interface Submission {
     status: string, 
     from: string, 
     to: string, 
-    dueDate: any, 
+    dueDate: any,
+    latitude: number,
+    longitude: number
 }
