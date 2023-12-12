@@ -54,8 +54,7 @@
                 </div>
                 <div class="col-3">
                     <button 
-                        id="calendar-button"
-                            (click)="d.toggle()"  
+                            id="calendar-button"
                             type="button" 
                         >
                             <img class="ml-3" src="assets/icons/Calendar.svg" alt="calendar-icon" />
@@ -64,6 +63,8 @@
                             class="form-control"
                             placeholder="yyyy-mm-dd"
                             name="dp"
+                            (click)="d.toggle();$event.stopPropagation();"
+                            (document:click)="closeFix($event, d)"
                             (ngModelChange)="onDateChange($event)"
                             [(ngModel)]="selectedDate"
                             ngbDatepicker
@@ -76,20 +77,32 @@
             </div>
             <div class="col-3 row d-flex justify-content-end align-items-center ml-2">
                 <div class="col-4 btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-outline-primary btn-toggle" [class.active]="view === 'card-map'" (click)="updateView('card-map')">
-                        <input type="radio" name="options" checked> Map
-                    </label>
-                    <label class="btn btn-outline-secondary btn-toggle" [class.active]="view === 'list'" (click)="updateView('list')">
-                        <input type="radio" name="options"> List
-                    </label>
+                  <label class="btn btn-outline-primary btn-toggle"
+                    [class.active]="view === 'card-map'"
+                    (click)="updateView('card-map')"
+                    (keydown.enter)="updateView('card-map')"
+                    tabindex="0">
+                    <input type="radio" name="options" checked> Map
+                  </label>
+                  <label class="btn btn-outline-secondary btn-toggle"
+                    [class.active]="view === 'list'"
+                    (click)="updateView('list')"
+                    (keydown.enter)="updateView('list')"
+                    tabindex="0">
+                    <input type="radio" name="options"> List
+                  </label>
                 </div>
                 <div class="ml-4 col-4">
-                    <a class="d-flex gap-3 align-items-center" (click)="exportFilteredSubmissions()">
-                        <img src="assets/icons/Paper Download.svg" alt="export icon" />
-                        <span class="text-primary ml-2">Export</span>
-                    </a>
+                  <a class="d-flex gap-3 align-items-center"
+                    (click)="exportFilteredSubmissions()"
+                    (keydown.enter)="exportFilteredSubmissions()"
+                    tabindex="0">
+                    <img src="assets/icons/Paper Download.svg" alt="export icon" />
+                    <span class="text-primary ml-2">Export</span>
+                  </a>
                 </div>
-            </div>
+              </div>
+              
         </div>
     </form>
     @if(view == 'card-map') {

@@ -1,7 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { BadgeComponent } from '../badge/badge.component';
 import { Submission, SubmissionStatus } from '../submission';
-import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
+import { NgbCalendar, NgbDate } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-submission-card',
@@ -12,13 +12,14 @@ import { NgbDate } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class SubmissionCardComponent {
+  today = inject(NgbCalendar).getToday();
   @Input() submission: Submission = { 
     id: 0, 
     task: '', 
     status: SubmissionStatus.Unassigned, 
     from: '', 
     to: '', 
-    dueDate: '',
+    dueDate: this.today,
     latitude: 0,
     longitude: 0
   }

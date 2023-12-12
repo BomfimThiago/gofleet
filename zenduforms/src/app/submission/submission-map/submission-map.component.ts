@@ -1,5 +1,5 @@
 import { Submission } from './../submission';
-import { Component, Input, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import * as L from 'leaflet';
 
@@ -12,9 +12,8 @@ import * as L from 'leaflet';
   templateUrl: './submission-map.component.html',
   styleUrl: './submission-map.component.css'
 })
-export class SubmissionMapComponent   {
+export class SubmissionMapComponent implements OnInit, OnChanges   {
   @Input() submissions: Submission[] = [];
-  centerCoordinates: any;
 
   options = {
     layers: [

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { NgbCalendar, NgbDate, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCalendar, NgbDate, NgbDatepicker, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
 import { JsonPipe } from '@angular/common';
 import { SubmissionCardComponent } from './submission-card/submission-card.component';
 import { SubmissionMapComponent } from './submission-map/submission-map.component';
@@ -44,8 +44,7 @@ export class SubmissionComponent {
     this.filteredSubmissions = [...this.submissions]
   }
 
-
-  updateFilteredSubmissions() {
+  updateFilteredSubmissions(): void {
     if (this.searchField || this.status || this.selectedSubmissionId || this.selectedDate ) {
       
       
@@ -72,7 +71,6 @@ export class SubmissionComponent {
     return dueDate >= selectedDate; 
   }
 
-
   onDateChange(event: {year: number, month: number, day: number}) {
     this.selectedDate.year = event.year
     this.selectedDate.month = event.month
@@ -81,7 +79,6 @@ export class SubmissionComponent {
     this.onFormChange()
   }
 
-
   onFormChange() {
     this.updateFilteredSubmissions();
   }
@@ -89,6 +86,35 @@ export class SubmissionComponent {
   updateView(selectedView: 'card-map' | 'list'): void {
     this.view = selectedView; 
   }
+
+  formatDate(date: NgbDate): string {
+    const monthNames = [
+      'january', 'february', 'march', 'april', 'may', 'june',
+      'july', 'august', 'september', 'october', 'november', 'december'
+    ];
+  
+    const day = date.day.toString().padStart(2, '0');
+    const month = monthNames[date.month - 1];
+    return `${day} ${month}`;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  closeFix(event: any, datePicker: any) {
+    if (event.target.offsetParent == null) datePicker.close();
+    else if (this.clickedInNgbDatePicker(event.path)) datePicker.close();
+  }
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  clickedInNgbDatePicker(eventPath: any) {
+    let datePickerClicked = true;
+    // @ts-expect-error Parameter 'item' implicitly has an 'any' type
+    eventPath.forEach(function (item) {
+      datePickerClicked = item.tagName != "NGB-DATEPICKER" && datePickerClicked;
+    });
+    return datePickerClicked;
+  }
+  
+
 
   exportFilteredSubmissions(): void {
     const currentDate = new Date();
@@ -99,14 +125,16 @@ export class SubmissionComponent {
             Status: submission.status,
             From: submission.from,
             To: submission.to,
-            DueDate: submission.dueDate,
+            DueDate: this.formatDate(submission.dueDate),
+            Latitude: submission.latitude.toString(),
+            Longitude: submission.longitude.toString(),
         };
     });
 
     this.exportToCSV(exportData, formattedDate);
   }
 
-  private exportToCSV(data: any[], currentDate: string): void {
+  private exportToCSV(data: { [key: string]: string }[], currentDate: string): void {
     const csvContent = "data:text/csv;charset=utf-8," +
         Object.keys(data[0]).map(key => key).join(",") + "\n" +
         data.map(submission => Object.values(submission).map(value => `"${value}"`).join(",")).join("\n");
@@ -119,6 +147,4 @@ export class SubmissionComponent {
     document.body.appendChild(link);
     link.click();
   }
-
-
 }

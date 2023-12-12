@@ -1,3 +1,5 @@
+import { NgbDate } from "@ng-bootstrap/ng-bootstrap";
+
 export enum SubmissionStatus {
     Uncomplete = 'Uncomplete',
     LowRisk = 'Low Risk',
@@ -12,7 +14,7 @@ export interface Submission {
     status: string, 
     from: string, 
     to: string, 
-    dueDate: any,
+    dueDate: NgbDate,
     latitude: number,
     longitude: number
 }

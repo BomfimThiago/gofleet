@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SubmissionStatus } from '../submission';
 
 @Component({
   selector: 'app-badge',
@@ -9,7 +8,7 @@ import { SubmissionStatus } from '../submission';
   templateUrl: './badge.component.html',
   styleUrl: './badge.component.css'
 })
-export class BadgeComponent {
+export class BadgeComponent implements OnInit {
   @Input() status: string = '';
   mappedStatus: string = '';
 
