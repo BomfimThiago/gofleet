@@ -57,23 +57,10 @@ export class SubmissionMapComponent   {
 
   private initializeMap(submissions: Submission[]): void {
     this.layers = [];
-    const center = this.calculateCenterCoordinates(submissions);
-  
-    console.log(center)
+
     submissions.forEach(submission => {
       const marker = L.marker([submission.latitude, submission.longitude], { icon: this.mapIcon });
       this.layers.push(marker);
     });
   }
-
-  private calculateCenterCoordinates(submissions: Submission[]): L.LatLngExpression {
-    const sumLat = submissions.reduce((sum, submission) => sum + submission.latitude, 0);
-    const sumLng = submissions.reduce((sum, submission) => sum + submission.longitude, 0);
-
-    const avgLat = sumLat / submissions.length;
-    const avgLng = sumLng / submissions.length;
-
-    return L.latLng(avgLat, avgLng)
-  }
-
 }
