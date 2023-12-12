@@ -46,8 +46,7 @@ export class SubmissionComponent {
 
   updateFilteredSubmissions(): void {
     if (this.searchField || this.status || this.selectedSubmissionId || this.selectedDate ) {
-      
-      
+
       this.filteredSubmissions = this.submissions.filter(submission => {
         const matchesSearch = submission.task.toLowerCase().includes(this.searchField.toLowerCase());
         const matchesSelectStatus = this.status  ? submission.status === this.status : true;
@@ -107,32 +106,36 @@ export class SubmissionComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   clickedInNgbDatePicker(eventPath: any) {
     let datePickerClicked = true;
-    // @ts-expect-error Parameter 'item' implicitly has an 'any' type
-    eventPath.forEach(function (item) {
-      datePickerClicked = item.tagName != "NGB-DATEPICKER" && datePickerClicked;
-    });
+    if(eventPath) {
+      // @ts-expect-error Parameter 'item' implicitly has an 'any' type
+      eventPath.forEach(function (item) {
+        datePickerClicked = item.tagName != "NGB-DATEPICKER" && datePickerClicked;
+      });
+    }
     return datePickerClicked;
   }
   
 
 
-  exportFilteredSubmissions(): void {
+  exportFilteredSubmissions(event: Event): void {
+    event.stopPropagation();
     const currentDate = new Date();
     const formattedDate = currentDate.toISOString().split('T')[0]; // Format as YYYY-MM-DD
     const exportData = this.filteredSubmissions.map(submission => {
-        return {
-            Task: submission.task,
-            Status: submission.status,
-            From: submission.from,
-            To: submission.to,
-            DueDate: this.formatDate(submission.dueDate),
-            Latitude: submission.latitude.toString(),
-            Longitude: submission.longitude.toString(),
-        };
+      return {
+        Task: submission.task,
+        Status: submission.status,
+        From: submission.from,
+        To: submission.to,
+        DueDate: this.formatDate(submission.dueDate),
+        Latitude: submission.latitude.toString(),
+        Longitude: submission.longitude.toString(),
+      };
     });
-
+  
     this.exportToCSV(exportData, formattedDate);
   }
+  
 
   private exportToCSV(data: { [key: string]: string }[], currentDate: string): void {
     const csvContent = "data:text/csv;charset=utf-8," +

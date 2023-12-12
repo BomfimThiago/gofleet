@@ -93,14 +93,14 @@
                   </label>
                 </div>
                 <div class="ml-4 col-4">
-                  <a class="d-flex gap-3 align-items-center"
-                    (click)="exportFilteredSubmissions()"
-                    (keydown.enter)="exportFilteredSubmissions()"
-                    tabindex="0">
-                    <img src="assets/icons/Paper Download.svg" alt="export icon" />
-                    <span class="text-primary ml-2">Export</span>
-                  </a>
-                </div>
+                    <a class="d-flex gap-3 align-items-center"
+                      (click)="exportFilteredSubmissions($event)"
+                      (keydown.enter)="exportFilteredSubmissions($event)"
+                      tabindex="0">
+                      <img src="assets/icons/Paper Download.svg" alt="export icon" />
+                      <span class="text-primary ml-2">Export</span>
+                    </a>
+                  </div>                  
               </div>
               
         </div>
