@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import { NgbCalendar, NgbDate, NgbDatepicker, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
+import { NgbCalendar, NgbDate, NgbDatepickerModule, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap'
 import { JsonPipe } from '@angular/common';
 import { SubmissionCardComponent } from './submission-card/submission-card.component';
 import { SubmissionMapComponent } from './submission-map/submission-map.component';
